@@ -1,0 +1,2 @@
+# DjangoNew
+Fresh start
