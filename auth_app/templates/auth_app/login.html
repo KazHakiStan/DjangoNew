@@ -1,0 +1,19 @@
+{% extends 'main_app/main.html' %}
+{% block title %}
+Логин
+{% endblock %}
+
+{% block content %}
+    <h1 style="color: aliceblue">Войти в аккаунт</h1>
+    <form method="post" action="/auth/login/">
+            {% csrf_token %}
+                <label for="username">Ник</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Пароль</label>
+                <input type="password" name="password" id="password">
+                {% if login_error %}
+                <label class="error">{{ login_error }}</label>
+                {% endif %}
+                <input class="button" type="submit" value="Войти">
+    </form>
+{% endblock %}

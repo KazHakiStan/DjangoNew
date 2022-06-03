@@ -33,3 +33,7 @@ def create(request):
         'error': error
     }
     return render(request, 'main_app/create.html', context)
+
+
+def team(request):
+    return render(request, 'main_app/team.html')
