@@ -1,27 +1,27 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.forms import ModelForm, EmailField, CharField
+from django.forms import ModelForm, TextInput, PasswordInput, EmailInput
 
 
 class RegisterForm(ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
-        # widgets = {
-        #     'username': CharField(attrs={
-        #         'class': 'form-control',
-        #         'placeholder': 'Ник'
-        #     }),
-        #     'email': EmailField(attrs={
-        #         'class': 'form-control',
-        #         'placeholder': 'Почта'
-        #     }),
-        #     'password': CharField(attrs={
-        #         'class': 'form-control',
-        #         'placeholder': 'Пароль'
-        #     })
-        # }
+        widgets = {
+            'username': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ник'
+            }),
+            'email': EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Почта'
+            }),
+            'password': PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Пароль'
+            })
+        }
 
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)

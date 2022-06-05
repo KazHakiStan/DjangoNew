@@ -2,14 +2,15 @@
 {% block title %}
 Создать пост
 {% endblock %}
-
 {% block content %}
     <h1 style="color: aliceblue">Создайте пост</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.title }}<br>
         {{ form.text }}<br>
-        <button type="submit" class="btn btn-success">Добавить</button>
+        {{ form.image }}<br>
+        <a style="color: aliceblue">Сделать пост приватным </a>{{ form.is_public }}<br>
+        <button type="submit" class="btn btn-success">Добавить МЭМ</button>
         <span>{{ error }}</span>
     </form>
 {% endblock %}

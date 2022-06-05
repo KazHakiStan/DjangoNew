@@ -1,0 +1,46 @@
+{% extends 'main_app/main.html' %}
+{% load static %}
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block content %}
+    <div class="header-bar">
+        <h1 style="color: aliceblue">Смешарик {{ user.username }}</h1>
+    </div>
+
+    <div class="card-body">
+    {% if user.profile.image %}
+      <img src="{{ user.profile.image.url }}" alt="" height=100 width=100><br><br>
+    {% else %}
+      <img src="{% static 'media\images\profile\da.png' %}" alt="" height=100 width=100><br><br>
+    {% endif %}
+
+{#      {% if user.profile.first_name %}#}
+{#      <p style="color: aliceblue"><strong>Имя:</strong> {{ user.profile.first_name }}</p><br><br>#}
+{#      {% endif %}#}
+{#      {% if user.profile.last_name %}#}
+{#      <p style="color: aliceblue"><strong>Фамилия:</strong> {{ user.profile.last_name }}</p><br><br>#}
+{#      {% endif %}#}
+{#      {% if user.profile.bio %}#}
+{#      <p style="color: aliceblue"><strong>Обо мне:</strong> {{ user.profile.bio }}</p><br><br>#}
+{#      {% else %}#}
+{#      <p style="color: aliceblue"><strong>Обо мне: </strong>Мы ничего не знаем об {{ user.username }} но мы уверены, он отличный человек.</p>#}
+{#      {% endif %}#}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group" style="color: aliceblue">
+            <legend class="border-bottom mb-4" style="color: aliceblue">Информация</legend>
+            Пользователь{{ u_form.username }}<br>
+            Почта<br>{{ u_form.email }}<br>
+            Имя{{ p_form.first_name }}<br>
+            Фамилия{{ p_form.last_name }}<br>
+            О пользователе<br>{{ p_form.bio }}<br>
+            Картинка профиля<br>{{ p_form.image }}
+        </fieldset><br>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Обновить</button>
+        </div>
+    </form>
+    </div>
+{% endblock %}

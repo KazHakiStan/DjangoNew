@@ -7,15 +7,9 @@
     <h1 style="color: aliceblue">Регистрация</h1>
     <form method="post" action="/auth/register/">
         {% csrf_token %}
-            <div>
-                Ник: {{ reg_form.username }}<br>
-            </div>
-            <div>
-                Почта: {{ reg_form.email }}<br>
-            </div>
-            <div>
-                Пароль: {{ reg_form.password }}<br>
-            </div>
+            {{ reg_form.username }}<br>
+            {{ reg_form.email }}<br>
+            {{ reg_form.password }}<br>
             <button type="submit" class="btn btn-success">Стать смешариком</button>
 
 
