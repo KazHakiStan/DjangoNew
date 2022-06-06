@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.forms import TextInput, Textarea, CheckboxInput, FileInput
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
@@ -18,7 +19,12 @@ def posts(request, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         posts = posts.filter(tags__in=[tag])
 
-    context = {'title': 'Главная страница', 'posts': posts, 'tag': tag}
+    paginator = Paginator(posts, 3)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'title': 'Главная страница', 'posts': posts, 'tag': tag, 'page_obj': page_obj}
     return render(request, 'main_app/posts.html', context)
 
 

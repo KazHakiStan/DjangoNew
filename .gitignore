@@ -131,4 +131,4 @@ dmypy.json
 *.xml
 
 .idea/
-.media/
+media/
