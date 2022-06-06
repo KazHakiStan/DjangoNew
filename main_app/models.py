@@ -13,7 +13,7 @@ class Post(models.Model):
     created_at = models.DateTimeField('Создан в:', auto_now_add=True)
     image = models.ImageField('Картинки', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    tags = TaggableManager()
+    tags = TaggableManager
 
     def __str__(self):
         return self.title
